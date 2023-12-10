@@ -1,19 +1,19 @@
 import classes from "./hero.module.css";
 import Image from "next/image";
 
-function Hero() {
+function Hero({ name, bio }) {
   return (
     <section className={classes.hero}>
       <div className={classes.image}>
         <Image
-          src="/images/site/ajit.jpg"
-          alt="Ajit Verma Img"
+          src="/images/site/default.png"
+          alt="User"
           width={300}
           height={300}
         />
       </div>
-      <h1>{"Hey, I'm Ajit Verma"}</h1>
-      <p>I blog about frontend developmeny, especially on React.</p>
+      <h1>{name}</h1>
+      {bio && <p>{bio}</p>}
     </section>
   );
 }

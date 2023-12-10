@@ -1,3 +1,4 @@
+import { connectToDatabase } from "@/lib/db";
 import { MongoClient } from "mongodb";
 
 async function handler(req, res) {
@@ -24,7 +25,7 @@ async function handler(req, res) {
 
     let client;
     try {
-      client = await MongoClient.connect(process.env.MONGODB_URL);
+      client = await connectToDatabase();
     } catch (error) {
       res.status(500).json({ message: "not able to connect with database" });
       return;
