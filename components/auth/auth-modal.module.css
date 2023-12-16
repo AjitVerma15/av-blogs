@@ -13,17 +13,17 @@
 .modalOpen {
   opacity: 1;
   transition: all 0.5s ease-in-out;
-  z-index: +1;
+  z-index: 99999;
 }
 .modalContent {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 500px;
+  width: 90%;
+  max-width: 500px;
   border-radius: 6px;
   transform: translate(-50%, -200%);
   transition: all 0.5s ease-in-out;
-  perspective: 1000;
   outline: 1px solid transparent;
   opacity: 0;
 }
@@ -41,7 +41,7 @@
   color: #424242;
   font-weight: 800;
   transition: all 0.5s ease-in-out;
-  z-index: +1;
+  z-index: 99999;
   background: rgba(0, 0, 0, 0.1);
   text-align: center;
   border-radius: 0 4px 0 0;

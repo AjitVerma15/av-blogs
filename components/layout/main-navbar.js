@@ -3,13 +3,18 @@ import Logo from "./logo";
 import classes from "./main-navbar.module.css";
 import AuthModal from "../auth/auth-modal";
 import { signOut, useSession } from "next-auth/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 const MainNavbar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
   const { data: session, status } = useSession();
   const router = useRouter();
+  useEffect(() => {
+    if (showNavbar) {
+      setShowNavbar(!showNavbar);
+    }
+  }, [router.asPath]);
 
   const logoutHandler = () => {
     signOut();
