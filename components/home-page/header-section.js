@@ -1,3 +1,4 @@
+import Link from "next/link";
 import classes from "./header-section.module.css";
 
 function HeaderSection() {
@@ -10,7 +11,7 @@ function HeaderSection() {
             "Discover stories, thinking, and expertise from writers on any topic."
           }
         </p>
-        <a href="/posts">Start Reading</a>
+        <Link href="/posts">Start Reading</Link>
       </div>
     </section>
   );

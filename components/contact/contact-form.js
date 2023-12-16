@@ -56,12 +56,12 @@ function ContactForm() {
 
   return (
     <section className={classes.contact}>
-      <h1>Hey! I'm Ajit Verma</h1>
-      <h2>How can I help you?</h2>
+      <h1>{"Hey! I'm Ajit Verma"}</h1>
+      <h2>{"How can I help you?"}</h2>
       <form className={classes.form} onSubmit={sendMessageHandler}>
         <div className={classes.controls}>
           <div className={classes.control}>
-            <label htmlFor="email">Your Email</label>
+            <label htmlFor="email">{"Your Email"}</label>
             <input
               type="email"
               id="email"
@@ -71,7 +71,7 @@ function ContactForm() {
             />
           </div>
           <div className={classes.control}>
-            <label htmlFor="name">Your Name</label>
+            <label htmlFor="name">{"Your Name"}</label>
             <input
               type="text"
               id="name"
@@ -82,7 +82,7 @@ function ContactForm() {
           </div>
         </div>
         <div className={classes.control}>
-          <label htmlFor="message">Your Message</label>
+          <label htmlFor="message">{"Your Message"}</label>
           <textarea
             id="message"
             rows="5"
@@ -93,7 +93,9 @@ function ContactForm() {
         </div>
 
         <div className={classes.actions}>
-          <button disabled={requestStatus == "pending"}>Send Message</button>
+          <button disabled={requestStatus == "pending"}>
+            {"Send Message"}
+          </button>
         </div>
       </form>
       {/* Removed the custom notification logic as of now*/}
