@@ -38,7 +38,7 @@ const MainNavbar = () => {
                 className={router.pathname == "/posts" ? classes.active : ""}
                 href="/posts"
               >
-                Posts
+                {"Posts"}
               </Link>
             </li>
             <li>
@@ -46,7 +46,7 @@ const MainNavbar = () => {
                 href="/contact"
                 className={router.pathname == "/contact" ? classes.active : ""}
               >
-                Contact
+                {"Contact"}
               </Link>
             </li>
             <li>
@@ -59,13 +59,13 @@ const MainNavbar = () => {
                   }
                   href="/profile"
                 >
-                  Profile
+                  {"Profile"}
                 </Link>
               )}
             </li>
             {status === "authenticated" && (
               <li>
-                <a onClick={logoutHandler}>Logout</a>
+                <a onClick={logoutHandler}>{"Logout"}</a>
               </li>
             )}
           </ul>

@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import classes from "./contact-form.module.css";
-import Notification from "../ui/notification";
 import { toast } from "react-toastify";
-import Image from "next/image";
+import { showToast } from "../ui/toast";
 
 async function sendContactData(contactDetails) {
   const response = await fetch("/api/contact", {
@@ -27,18 +26,6 @@ function ContactForm() {
   const [requestStatus, setRequestStatus] = useState(); // 'pending', 'success', 'error'
   const [requestError, setRequestError] = useState();
 
-  // Removed the custom notification logic as of now
-  // useEffect(() => {
-  //   if (requestStatus === "success" || requestStatus === "error") {
-  //     const timer = setTimeout(() => {
-  //       setRequestStatus(null);
-  //       setRequestError(null);
-  //     }, 3000);
-
-  //     return () => clearTimeout(timer);
-  //   }
-  // }, [requestStatus]);
-
   async function sendMessageHandler(event) {
     event.preventDefault();
 
@@ -55,52 +42,17 @@ function ContactForm() {
       setEnteredMessage("");
       setEnteredEmail("");
       setEnteredName("");
-      toast.update(notificationId, {
-        render: "Message sent successfully!",
-        type: "success",
-        isLoading: false,
-        autoClose: 3000,
-        closeButton: true,
-      });
+      showToast(notificationId, "Message sent successfully!", "success");
     } catch (error) {
       setRequestError(error.message);
       setRequestStatus("error");
-      toast.update(notificationId, {
-        render: "Something went wrong, Please try again",
-        type: "error",
-        isLoading: false,
-        autoClose: 3000,
-        closeButton: true,
-      });
+      showToast(
+        notificationId,
+        "Something went wrong, Please try again",
+        "error"
+      );
     }
   }
-
-  // Removed the custom notification logic as of now
-  // let notification;
-
-  // if (requestStatus === "pending") {
-  //   notification = {
-  //     status: "pending",
-  //     title: "Sending message...",
-  //     message: "Your message is on its way!",
-  //   };
-  // }
-
-  // if (requestStatus === "success") {
-  //   notification = {
-  //     status: "success",
-  //     title: "Success!",
-  //     message: "Message sent successfully!",
-  //   };
-  // }
-
-  // if (requestStatus === "error") {
-  //   notification = {
-  //     status: "error",
-  //     title: "Error!",
-  //     message: requestError,
-  //   };
-  // }
 
   return (
     <section className={classes.contact}>

@@ -3,6 +3,7 @@ import classes from "./auth-modal.module.css";
 import { toast } from "react-toastify";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
+import { showToast } from "../ui/toast";
 
 async function createUser(email, password, name) {
   const response = await fetch("/api/auth/signup", {
@@ -51,32 +52,19 @@ export default function AuthModal() {
         });
         setLoading(false);
         if (result.ok) {
-          toast.update(notificationId, {
-            render: "User logged-In successfully!",
-            type: "success",
-            isLoading: false,
-            autoClose: 3000,
-            closeButton: true,
-          });
+          showToast(notificationId, "User logged-In successfully!", "success");
           router.replace("/profile");
         } else {
-          toast.update(notificationId, {
-            render: result.error,
-            type: "error",
-            isLoading: false,
-            autoClose: 3000,
-            closeButton: true,
-          });
+          showToast(notificationId, result.error, "error");
         }
       } catch (error) {
         console.log(error);
-        toast.update(notificationId, {
-          render: error.message || "Something went wrong!, Please try again",
-          type: "error",
-          isLoading: false,
-          autoClose: 3000,
-          closeButton: true,
-        });
+        showToast(
+          notificationId,
+          error.message || "Something went wrong!, Please try again",
+          "error"
+        );
+
         setLoading(false);
       }
     } else {
@@ -98,19 +86,18 @@ export default function AuthModal() {
           autoClose: 3000,
           closeButton: true,
         });
+        showToast(notificationId, "User created successfully!", "success");
         setLoading(false);
         if (result.ok) {
           router.replace("/profile");
         }
       } catch (error) {
         console.log(error);
-        toast.update(notificationId, {
-          render: error.message || "Something went wrong!, Please try again",
-          type: "error",
-          isLoading: false,
-          autoClose: 3000,
-          closeButton: true,
-        });
+        showToast(
+          notificationId,
+          error.message || "Something went wrong!, Please try again",
+          "error"
+        );
         setLoading(false);
       }
     }
