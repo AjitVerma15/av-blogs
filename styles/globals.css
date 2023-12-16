@@ -42,10 +42,22 @@ body {
   --size-20: 5rem;
   --size-40: 10rem;
 
+  --d: 2500ms;
+  --angle: 90deg;
+  --gradX: 100%;
+  --gradY: 50%;
+  --c1: rgb(249, 249, 249);
+  --c2: rgba(168, 239, 255, 0.1);
+
   margin: 0;
   background-color: var(--color-grey-500);
   color: #252525;
   font-family: "Roboto", sans-serif;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  height: 100%;
+  min-height: 100%;
 }
 
 h1,
@@ -61,4 +73,8 @@ a {
 button {
   font: inherit;
   cursor: pointer;
+}
+
+.notification .Toastify__toast-body {
+  font-size: 14px !important;
 }

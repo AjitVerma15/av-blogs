@@ -1,7 +1,42 @@
 .post {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  background-color: var(--color-grey-800);
   text-align: center;
+  position: relative;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #1c1b29;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post_content {
+  position: relative;
+  z-index: 1;
+  height: 96%;
+  width: 96%;
+  background-color: var(--color-grey-800);
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+.post:after {
+  content: "";
+  height: 150%;
+  width: 150%;
+  position: absolute;
+  left: -25%;
+  top: -25%;
+}
+
+.post:hover:after {
+  animation: rotate 2s infinite linear;
+  background-image: conic-gradient(#04b0ee 20deg, transparent 120deg);
 }
 
 .post a {

@@ -1,10 +1,11 @@
 import { Fragment } from "react";
 import MainNavigation from "./main-navigation";
+import MainNavbar from "./main-navbar";
 
 function Layout(props) {
   return (
     <Fragment>
-      <MainNavigation />
+      <MainNavbar />
       <main>{props.children}</main>
     </Fragment>
   );

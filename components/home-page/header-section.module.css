@@ -1,0 +1,39 @@
+.headerSection {
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-grey-900),
+    var(--color-grey-800)
+  );
+  padding: var(--size-8) 10%;
+}
+
+.headerSection div {
+  text-align: left;
+}
+
+.headerSection h3 {
+  margin: 0;
+  color: var(--color-grey-300);
+  font-size: 85px;
+}
+
+.headerSection p {
+  color: var(--color-grey-200);
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+.headerSection a {
+  padding: 8px 20px;
+  font-size: var(--size-5);
+  text-decoration: none;
+
+  color: var(--color-grey-300);
+  border-radius: 36px;
+  border-color: #242424;
+  background: #000000;
+  margin-left: -6px;
+}
+.headerSection a:hover {
+  background: rgba(25, 25, 25, 1);
+}
