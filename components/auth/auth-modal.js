@@ -39,7 +39,7 @@ export default function AuthModal() {
 
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
-    const enteredName = nameInputRef.current.value;
+    const enteredName = nameInputRef?.current?.value;
 
     // optional: Add validation
     setLoading(true);
