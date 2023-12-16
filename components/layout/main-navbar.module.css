@@ -78,6 +78,7 @@
 
   .navElements.active {
     width: 270px;
+    z-index: 10;
   }
 
   .navElements ul {
