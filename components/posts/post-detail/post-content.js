@@ -12,23 +12,37 @@ SyntaxHighlighter.registerLanguage("css", css);
 
 function PostContent(props) {
   const { post } = props;
-  const imagePath = `/images/posts/${post.slug}/${post.image}`;
+  let imagePath = `/images/posts/${post.slug}/${post.image}`;
+  if (!post.image) {
+    imagePath = `/images/posts/default_post.png`;
+  }
 
+  const isValidURL = (url) => {
+    try {
+      new URL(url);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
   const customRenderer = {
-    // img(image) {
-    //   return <Image src={image.src} alt={image.alt} width={600} height={300} />;
-    // },
     p(paragraph) {
       const { node } = paragraph;
       if (node?.children[0].tagName === "img") {
         const image = node.children[0];
+        const imagePath = isValidURL(image.properties.src)
+          ? image.properties.src
+          : `/images/posts/${post.slug}/${image.properties.src}`;
+
         return (
           <div className={classes.image}>
             <Image
-              src={`/images/posts/${post.slug}/${image.properties.src}`}
+              src={imagePath}
               alt={image.properties.alt}
               width={600}
               height={300}
+              layout="responsive"
+              loading="lazy"
             />
           </div>
         );
@@ -37,7 +51,7 @@ function PostContent(props) {
     },
     code(code) {
       const { className, children } = code;
-      const language = className.split("-")[1]; // className is something like language-js => we need the 'js'
+      const language = className?.split("-")[1] || "js"; // className is something like language-js => we need the 'js'
       return (
         <SyntaxHighlighter
           style={atomDark}

@@ -14,7 +14,7 @@ export default function App({
     <SessionProvider>
       <Layout>
         <Head>
-          <meta name="viewport" content="width=device-width, initial-scala=1" />
+          <meta name="viewport" content="width=device-width" />
         </Head>
         <Component {...pageProps} />
         <NotificationToast />

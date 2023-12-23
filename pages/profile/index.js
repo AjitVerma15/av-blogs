@@ -12,7 +12,6 @@ function ProfilePage(props) {
   if (status === "unauthenticated") {
     router.replace("/");
   }
-  console.log(useSession());
   return (
     <Fragment>
       <Head>
@@ -22,9 +21,10 @@ function ProfilePage(props) {
           content="Profile page contains information about user"
         />
       </Head>
-      <Hero name={session?.user?.name} />
-      {/* <FeaturedPosts posts={props.posts} /> */}
-      {"Work in progress"}
+      <Hero name={session?.user?.name} email={session?.user?.email} />
+      <div className="flex justify-center items-center text-lg font-black">
+        {"Work in progress"}
+      </div>
     </Fragment>
   );
 }
