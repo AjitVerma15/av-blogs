@@ -11,7 +11,12 @@ function PostItem(props) {
     year: "numeric",
   });
 
-  const imagePath = `/images/posts/${slug}/${image}`;
+  let imagePath = `/images/posts/${slug}/${image}`;
+
+  if (!image) {
+    imagePath = `/images/posts/default_post.png`;
+  }
+
   return (
     <li className={classes.post}>
       <div className={classes.post_content}>
@@ -23,6 +28,7 @@ function PostItem(props) {
               width={300}
               height={200}
               layout="responsive"
+              loading="lazy"
             />
           </div>
           <div className={classes.content}>
