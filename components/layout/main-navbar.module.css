@@ -54,6 +54,9 @@
 }
 
 @media (max-width: 768px) {
+  .navElements ul li {
+    margin-left: 20px;
+  }
   .navElements ul li:not(:last-child) {
     margin-right: 30px;
   }
